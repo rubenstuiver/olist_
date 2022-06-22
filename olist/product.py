@@ -21,7 +21,7 @@ class Product:
         """
         products = self.data['products']
 
-        # (optional) convert name to English
+        # convert name to English
         en_category = self.data['product_category_name_translation']
         df = products.merge(en_category, on='product_category_name')
         df.drop(['product_category_name'], axis=1, inplace=True)
@@ -40,7 +40,7 @@ class Product:
         'product_id', 'price'
         """
         order_items = self.data['order_items']
-        # There are many different order_items per product_id, each with different prices. Take the mean of the various prices
+        # the mean of the various prices
         return order_items[['product_id',
                             'price']].groupby('product_id').mean()
 
@@ -141,5 +141,4 @@ class Product:
         - `product_weight_g`: mean or median weight per category
         - ...
         '''
-        pass  # YOUR CODE HERE
-
+        pass

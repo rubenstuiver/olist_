@@ -6,7 +6,7 @@ from olist.order import Order
 
 class Seller:
     def __init__(self):
-        # Import data only once
+        # Import data once
         olist = Olist()
         self.data = olist.get_data()
         self.order = Order()
@@ -17,7 +17,7 @@ class Seller:
         'seller_id', 'seller_city', 'seller_state'
         """
         sellers = self.data['sellers'].copy(
-        )  # Make a copy before using inplace=True so as to avoid modifying self.data
+        )
         sellers.drop('seller_zip_code_prefix', axis=1, inplace=True)
         sellers.drop_duplicates(
             inplace=True)  # There can be multiple rows per seller
@@ -79,12 +79,12 @@ class Seller:
         Returns a DataFrame with:
         'seller_id', 'date_first_sale', 'date_last_sale', 'months_on_olist'
         """
-        # First, get only orders that are approved
+        # orders that are approved
         orders_approved = self.data['orders'][[
             'order_id', 'order_approved_at'
         ]].dropna()
 
-        # Then, create a (orders <> sellers) join table because a seller can appear multiple times in the same order
+        # (orders <> sellers) join table
         orders_sellers = orders_approved.merge(self.data['order_items'],
                                                on='order_id')[[
                                                    'order_id', 'seller_id',
@@ -141,7 +141,7 @@ class Seller:
         'seller_id', 'share_of_five_stars', 'share_of_one_stars', 'review_score'
         """
 
-        # $CHALLENGIFY_BEGIN
+
         orders_reviews = self.order.get_review_score()
         orders_sellers = self.data['order_items'][['order_id', 'seller_id'
                                                    ]].drop_duplicates()
@@ -162,7 +162,7 @@ class Seller:
         ]
 
         return res
-        # $CHALLENGIFY_END
+
 
     def get_training_data(self):
         """
