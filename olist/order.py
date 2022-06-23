@@ -20,7 +20,7 @@ class Order:
         and filters out non-delivered orders unless specified
         """
 
-        orders = self.data['orders'].copy()
+        orders = self.data['corders'].copy()
 
         # filter delivered orders
         if is_delivered:
@@ -42,7 +42,7 @@ class Order:
              orders['order_estimated_delivery_date']) / np.timedelta64(24, 'h')
 
         def handle_delay(x):
-            # only keep delay where wait_time is longer than expected
+            # only keep delay where wait_time longer than expected
             if x > 0:
                 return x
             else:
