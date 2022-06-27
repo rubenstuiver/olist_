@@ -1,10 +1,9 @@
 # Data analysis
 - Document here the project: olist
 - Description: Project Description
-- Data Source:
-- Type of analysis:
+- Data Source: Kaggle Olist company data
+- Type of analysis: Regression
 
-Please document the project the better you can.
 
 # Startup the project
 
@@ -23,13 +22,11 @@ make clean install test
 ```
 
 Check for olist in gitlab.com/{group}.
-If your project is not set please add it:
 
 - Create a new project on `gitlab.com/{group}/olist`
 - Then populate it:
 
 ```bash
-##   e.g. if group is "{group}" and project_name is "olist"
 git remote add origin git@github.com:{group}/olist.git
 git push -u origin master
 git push -u origin --tags
@@ -46,7 +43,7 @@ olist-run
 
 # Install
 
-Go to `https://github.com/{group}/olist` to see the project, manage issues,
+Go to `https://github.com/rubenstuiver/olist` to see the project, manage issues,
 setup you ssh public key, ...
 
 Create a python3 virtualenv and activate it:
@@ -59,7 +56,7 @@ deactivate; virtualenv -ppython3 ~/venv ; source ~/venv/bin/activate
 Clone the project and install it:
 
 ```bash
-git clone git@github.com:{group}/olist.git
+git clone git@github.com:rubenstuiver/olist.git
 cd olist
 pip install -r requirements.txt
 make clean install test                # install and test
