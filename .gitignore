@@ -5,4 +5,4 @@
 *.csv
 **/__pycache__/
 .env
-presentation_result/
+**/presentation_result/
